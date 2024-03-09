@@ -25,6 +25,7 @@ import {
 import { useMediaQuery } from '@chakra-ui/react'
 import {useSelector,useDispatch} from 'react-redux';
 import { LOGIN,SET_NAME,SET_EMAIL,SET_PASSWORD } from '../Redux/login/actionType';
+import axios from 'axios';
 
 const Login = () => {
 
