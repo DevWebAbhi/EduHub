@@ -1,0 +1,10 @@
+:root{
+  --max-width:1920px;
+}
+
+.App {
+  max-width: var(--max-width);
+  margin: auto;
+}
+
+
