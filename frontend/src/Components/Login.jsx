@@ -43,14 +43,15 @@ const Login = () => {
 
     async function handleAuthentication(){
       console.log(selector)
+      const email=selector.Data.email,password=selector.Data.password,name=selector.Data.name;
       if(!selector.login){
-        if(selector.Data.name=="" || selector.Data.email=="" || selector.Data.password==""){
+        if(email.length==0 || password.length==0 || name.length==0){
           dispatch({type:SET_ALERT_MSG,payload:"Fill all credentials"});
         isSet();
         return;
         }
       }else{
-        if(selector.Data.email=="" || selector.Data.password==""){
+        if(email.length==0 || password.length==0){
           dispatch({type:SET_ALERT_MSG,payload:"Fill all credentials"});
           isSet();
           return;
@@ -59,8 +60,9 @@ const Login = () => {
       try {
 
         if(selector.login){
-
-          const data=await axios.get("https://eduhub-3oyx.onrender.com/user",{email:selector.Data.email,password:selector.Data.password})
+          
+          console.log(email,password)
+          const data=await axios.get("https://eduhub-3oyx.onrender.com/user",{email:email,password:password})
           if(data.data.msg=="not a user"){
             dispatch({type:SET_ALERT_MSG,payload:"Not a user please login"});
             isSet();

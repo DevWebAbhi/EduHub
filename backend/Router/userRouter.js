@@ -39,6 +39,8 @@ userRouter.post("/post",async(req,res)=>{
 
 userRouter.get('/',async(req,res)=>{
     const {email,password}=req.body;
+    console.log(req.body);
+    console.log(req);
     try {
         console.log(email,password);
         const check =await userModel.findOne({email:email});
