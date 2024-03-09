@@ -12,7 +12,7 @@ const userRouter=express.Router();
 
 const jwt = require('jsonwebtoken');
 
-userRouter.post("/post",async(req,res)=>{
+userRouter.post("/signup",async(req,res)=>{
     const {name,email,password}=req.body;
     try {
         const check =await userModel.findOne({email:email});
@@ -37,16 +37,15 @@ userRouter.post("/post",async(req,res)=>{
     }
 })
 
-userRouter.get('/',async(req,res)=>{
+userRouter.post('/login',async(req,res)=>{
     const {email,password}=req.body;
-    console.log(req.body);
-    console.log(req);
+    
     try {
-        console.log(email,password);
+        
         const check =await userModel.findOne({email:email});
-        console.log("my check")
+       
         const pass=await bcrypt.compareSync(password, check.password);
-        console.log(email,password);
+       
         if(pass){
             const token =await jwt.sign({ userID:check.id }, 'shhhhh');
             if(pass.userType=="admin"){

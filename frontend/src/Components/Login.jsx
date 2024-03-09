@@ -62,7 +62,7 @@ const Login = () => {
         if(selector.login){
           
           console.log(email,password)
-          const data=await axios.get("https://eduhub-3oyx.onrender.com/user",{email:email,password:password})
+          const data=await axios.post("https://eduhub-3oyx.onrender.com/user",{email:email,password:password})
           if(data.data.msg=="not a user"){
             dispatch({type:SET_ALERT_MSG,payload:"Not a user please login"});
             isSet();
