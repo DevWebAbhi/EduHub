@@ -1,9 +1,11 @@
 const express=require("express");
 const app=express();
 const PORT=process.env.PORT;
+const cors = require('cors')
 const userRouter=require("./Router/userRouter");
 const courseRouter=require("./Router/courseRouter");
 require('dotenv').config();
+app.use(cors());
 const {connect}=require("./db");
 app.use(express.json());
 

@@ -52,7 +52,7 @@ userRouter.get('/',async(req,res)=>{
            
            return res.status(200).send({msg:"sucessfull",token:token});
         }
-      return res.status(200).send({msg:"Not a user"});
+      return res.status(200).send({msg:"not a user"});
        
     } catch (error) {
         res.status(502).send({msg:"error"});

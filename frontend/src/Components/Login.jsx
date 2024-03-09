@@ -24,7 +24,7 @@ import {
   } from '@chakra-ui/react'
 import { useMediaQuery } from '@chakra-ui/react'
 import {useSelector,useDispatch} from 'react-redux';
-import { LOGIN,SET_NAME,SET_EMAIL,SET_PASSWORD } from '../Redux/login/actionType';
+import { LOGIN,SET_NAME,SET_EMAIL,SET_PASSWORD,SET_ALERT_MSG } from '../Redux/login/actionType';
 import axios from 'axios';
 
 const Login = () => {
@@ -45,11 +45,13 @@ const Login = () => {
       console.log(selector)
       if(!selector.login){
         if(selector.Data.name=="" || selector.Data.email=="" || selector.Data.password==""){
+          dispatch({type:SET_ALERT_MSG,payload:"Fill all credentials"});
         isSet();
         return;
         }
       }else{
         if(selector.Data.email=="" || selector.Data.password==""){
+          dispatch({type:SET_ALERT_MSG,payload:"Fill all credentials"});
           isSet();
           return;
         }
@@ -58,7 +60,13 @@ const Login = () => {
 
         if(selector.login){
 
-          const data=await axios.post()
+          const data=await axios.post("https://eduhub-3oyx.onrender.com/user",{email:selector.Data.email,password:selector.Data.password})
+          if(data.data.msg=="not a user"){
+            dispatch({type:SET_ALERT_MSG,payload:"Not a user please login"});
+            isSet();
+            return;
+          }
+          console.log(data)
         }else{
 
         }
