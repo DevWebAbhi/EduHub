@@ -43,7 +43,7 @@ userRouter.get('/',async(req,res)=>{
        
         const check =await userModel.findOne({email:email});
         const pass=await bcrypt.compareSync(password, check.password);
-
+        console.log(email,password);
         if(pass){
             const token =await jwt.sign({ userID:check.id }, 'shhhhh');
             if(pass.userType=="admin"){
