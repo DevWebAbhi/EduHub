@@ -70,18 +70,18 @@ courseRouter.post("/post",async(req,res)=>{
               return res.status(500).send({msg:"error"});
             }
             
-            console.log(1)
+            
              const image= "https://eduhub-3oyx.onrender.com/"+"files/courseImages/"+req.files[0].filename;
-            console.log(2,image)
-            const{name,description,checklist}=req.body;
-            console.log(3,req.body,name,description,checklist)
+            
+            const{title,description,checklist}=req.body;
+           
             const data = await courseModel.create({
-              name: name,
+              title:title,
               image: image,
               description: description,
               checklist: checklist
           });
-            console.log(5)
+           
           });
             
             return res.status(200).send({msg:"sucessfull"});
