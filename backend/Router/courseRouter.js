@@ -58,8 +58,8 @@ courseRouter.post("/post",async(req,res)=>{
     const{name,description,image,checklist}=req.body;
     try {
         const decoded = jwt.verify(token, 'shhhhh');
-        console.log(0)
-        const check =await userModel.find({id:decoded.userID});
+        console.log(0,decoded)
+        const check =await userModel.find({_id:decoded.userID});
         console.log("check 1",check)
         if(check.userType=="admin"){
           console.log("check 2")
