@@ -5,7 +5,7 @@ const cors = require('cors')
 const userRouter=require("./Router/userRouter");
 const courseRouter=require("./Router/courseRouter");
 require('dotenv').config();
-app.use(cors("http://localhost:3000"));
+app.use(cors("https://edu-mgvwklcaj-devwebabhis-projects.vercel.app"));
 const {connect}=require("./db");
 app.use(express.json());
 
