@@ -48,7 +48,7 @@ userRouter.post('/login',async(req,res)=>{
        
         if(pass){
             const token =await jwt.sign({ userID:check.id }, 'shhhhh');
-            if(pass.userType=="admin"){
+            if(check.userType=="admin"){
                 return res.status(200).send({msg:"sucessfull",userType:"admin",token:token});
             }
            

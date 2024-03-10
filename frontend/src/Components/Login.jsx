@@ -26,9 +26,10 @@ import { useMediaQuery } from '@chakra-ui/react'
 import {useSelector,useDispatch} from 'react-redux';
 import { LOGIN,SET_NAME,SET_EMAIL,SET_PASSWORD,SET_ALERT_MSG } from '../Redux/login/actionType';
 import axios from 'axios';
+import {useNavigate} from 'react-router-dom';
 
 const Login = () => {
-
+    const navigate=useNavigate();
     const { isOpen, onOpen, onClose } = useDisclosure();
     const { isOpen:isvisible, onOpen:isSet, onClose:isUnset } = useDisclosure()
     const cancelRef = React.useRef()
@@ -50,6 +51,7 @@ const Login = () => {
         isSet();
         return;
         }
+  
       }else{
         if(email.length==0 || password.length==0){
           dispatch({type:SET_ALERT_MSG,payload:"Fill all credentials"});
@@ -62,19 +64,45 @@ const Login = () => {
         if(selector.login){
           
           console.log(email,password)
-          const data=await axios.post("https://eduhub-3oyx.onrender.com/user",{email:email,password:password})
+          const data=await axios.post("https://eduhub-3oyx.onrender.com/user/login",{email:email,password:password})
+          if(data.data.msg=="error"){
+            dispatch({type:SET_ALERT_MSG,payload:"something went wrong"});
+              isSet();
+              return;
+           }
+          if(data.data.userType=="admin"){
+            console.log("admin");
+            localStorage.setItem("token-user-eduhub",JSON.stringify({token:data.data.token,userType:"admin"}));
+            navigate("/admin");
+            return;
+          }
           if(data.data.msg=="not a user"){
             dispatch({type:SET_ALERT_MSG,payload:"Not a user please login"});
             isSet();
             return;
           }
+          localStorage.setItem("token-user-eduhub",JSON.stringify({token:data.data.token,userType:"student"}));
+          navigate("/student");
           console.log(data)
         }else{
+          const data=await axios.post("https://eduhub-3oyx.onrender.com/user/signup",{name:name,email:email,password:password})
+         if(data.data.msg=="error"){
+          dispatch({type:SET_ALERT_MSG,payload:"something went wrong"});
+            isSet();
+            return;
+         }
+          if(data.data.msg=="already register"){
+            dispatch({type:SET_ALERT_MSG,payload:"Already Registred"});
+            isSet();
+            return;
+          }
+          localStorage.setItem("token-user-eduhub",JSON.stringify({token:data.data.token,userType:"student"}));
+          navigate("/student");
 
         }
         
       } catch (error) {
-        
+        console.log(error);
       }
     }
 
@@ -92,7 +120,11 @@ const Login = () => {
         if(loginCheck==undefined || loginCheck==null){
             onOpen();
         }else{
-          window.location.href="";
+          if(loginCheck.userType=="admin"){
+            navigate("/admin");
+          }else{
+            navigate("/student");
+          }
         }
     },[])
 
