@@ -55,15 +55,31 @@ courseRouter.post("/post",async(req,res)=>{
         const decoded = jwt.verify(token, 'shhhhh');
         const check =await userModel.findOne({id:decoded.userID});
         if(check.userType=="admin"){
+
+
+          upload(req, res,async function (err) {
+            if (err) {
+              console.error(err);
+              return res.status(500).send(err.message);
+            }
+            
+            
+             const image= "https://eduhub-3oyx.onrender.com/"+'files/courseImages/'+req.files[0].filename;
+            
+            const{name,description,checklist}=req.body;
             const data=await courseModel({
-                
+               name,image,description,checklist 
             });
+           
             await data.save();
+            
+          });
+            
             return res.status(200).send({msg:"sucessfull"});
         }
         return res.status(200).send({msg:"not a admin"});
     } catch (error) {
-        res.status(502).send({msg:"error"});
+        res.status(500).send({msg:"error"});
     }
 })
 
