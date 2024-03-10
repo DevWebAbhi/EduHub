@@ -62,13 +62,13 @@ courseRouter.post("/post",async(req,res)=>{
         const check =await userModel.findOne({_id:decoded.userID});
         console.log("check 1",check)
         if(check.userType=="admin"){
-          console.log("check 2")
+          console.log("check 2",req.body,req.files,req.file)
 
           upload(req, res,async function (err) {
-            console.log("check 3")
+            console.log("check 3",req.body,req.files,req.file);
             if (err) {
               console.error(err);
-              return res.status(500).send(err.message);
+              return res.status(500).send({msg:"error"});
             }
             
             
