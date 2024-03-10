@@ -10,6 +10,8 @@ const multer = require('multer');
 
 const fs = require('fs');
 
+const jwt = require('jsonwebtoken');
+
 courseRouter.get("/",async(req,res)=>{
     try {
         const data= await courseModel.find();
