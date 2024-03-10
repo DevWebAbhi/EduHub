@@ -66,7 +66,7 @@ const CourseUpload = () => {
             formData.append("description", description);
             formData.append("checklist", checklist);
 
-            const data=await axios.get('https://eduhub-3oyx.onrender.com/courses/post', formData,{
+            const data=await axios.post('https://eduhub-3oyx.onrender.com/courses/post', formData,{
             headers: {
             Authorization: 'Bearer ' + token 
             }

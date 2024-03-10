@@ -54,10 +54,12 @@ courseRouter.post("/post",async(req,res)=>{
     try {
         const decoded = jwt.verify(token, 'shhhhh');
         const check =await userModel.findOne({id:decoded.userID});
+        console.log("check 1")
         if(check.userType=="admin"){
-
+          console.log("check 2")
 
           upload(req, res,async function (err) {
+            console.log("check 3")
             if (err) {
               console.error(err);
               return res.status(500).send(err.message);
