@@ -90,7 +90,7 @@ const CourseUpload = () => {
                 return;
 
 
-            console.log(selector)
+            
         } catch (error) {
             console.log(error)
             dispatch({type:ADMIN_COURSE_UPLOAD_SET_ALERT_MSG,payload:"Something went wrong"});
@@ -123,6 +123,7 @@ const CourseUpload = () => {
     
        
     >
+        <FormLabel marginBottom={"2rem"} color={"#3498DB"} fontSize={"xx-large"} fontWeight={"500"}>Upload Course</FormLabel>
         <FormLabel  marginBottom={"1rem"} color={"#3498DB"} fontSize={"large"} fontWeight={"500"}>Title</FormLabel>
         <Input type='text' name={ADMIN_COURSE_UPLOAD_SET_TITLE} onChange={handleInput} placeholder='Course Title'   width={"100%"} display={"block"} height={"1.7rem"} margin={"auto"} marginBottom={"1.6rem"}  borderWidth={"thin"} borderRadius={"0.5rem"} />
         <FormLabel  marginBottom={"1rem"} color={"#3498DB"} fontSize={"large"} fontWeight={"500"}>Upload Image</FormLabel>

@@ -121,7 +121,7 @@ const Login = () => {
             onOpen();
         }else{
           if(loginCheck.userType=="admin"){
-            navigate("/admin");
+            navigate("/admin/course_upload");
           }else{
             navigate("/student");
           }
