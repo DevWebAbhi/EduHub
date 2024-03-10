@@ -9,7 +9,7 @@ app.use(cors("http://localhost:3000"));
 const {connect}=require("./db");
 app.use(express.json());
 
-
+app.use("/files", express.static(__dirname + '/Assets'));
 app.get("/",(req,res)=>{
     res.status(200).send({msg:"This is EduHub backend application"});
 })
@@ -18,7 +18,7 @@ app.use("/user",userRouter);
 
 app.use("/courses",courseRouter);
 
-app.use("/files", express.static(__dirname + '/Assets'));
+
 
 app.get('*', (req, res) => {
     res.sendStatus(501).send({ message: 'Not Implemented' });
