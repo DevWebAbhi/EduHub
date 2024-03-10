@@ -79,6 +79,12 @@ const CourseUpload = () => {
                 return;
             }
 
+            if(data.data.msg=="error"){
+                dispatch({type:ADMIN_COURSE_UPLOAD_SET_ALERT_MSG,payload:"Error occured"});
+                isSet();
+                return;
+            }
+
             dispatch({type:ADMIN_COURSE_UPLOAD_SET_ALERT_MSG,payload:"Posted Sucessfully"});
                 isSet();
                 return;

@@ -5,7 +5,7 @@ const cors = require('cors')
 const userRouter=require("./Router/userRouter");
 const courseRouter=require("./Router/courseRouter");
 require('dotenv').config();
-app.use(cors());
+app.use(cors("http://localhost:3000"));
 const {connect}=require("./db");
 app.use(express.json());
 
