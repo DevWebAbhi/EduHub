@@ -72,11 +72,11 @@ courseRouter.post("/post",async(req,res)=>{
             
             console.log(1)
              const image= "https://eduhub-3oyx.onrender.com/"+"files/courseImages/"+req.files[0].filename;
-            console.log(2)
+            console.log(2,image)
             const{name,description,checklist}=req.body;
             console.log(3,req.body)
             const data=await courseModel({
-               name,image,description,checklist 
+               name:name,image:image,description:description,checklist:checklist 
             });
            console.log(4)
             await data.save();
