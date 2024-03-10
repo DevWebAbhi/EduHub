@@ -49,7 +49,9 @@ const storage = multer.diskStorage({
   }).array('Images', 12);
 
 courseRouter.post("/post",async(req,res)=>{
+  console.log("check -2")
     const token=req.headers.authorization.split(" ")[1];
+    console.log("check -1")
     const{name,description,image,checklist}=req.body;
     try {
         const decoded = jwt.verify(token, 'shhhhh');
