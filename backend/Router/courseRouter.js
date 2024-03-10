@@ -75,11 +75,12 @@ courseRouter.post("/post",async(req,res)=>{
             console.log(2,image)
             const{name,description,checklist}=req.body;
             console.log(3,req.body)
-            const data=await courseModel({
-               name:name,image:image,description:description,checklist:checklist 
-            });
-           console.log(4)
-            await data.save();
+            const data = await courseModel.create({
+              name: name,
+              image: image,
+              description: description,
+              checklist: checklist
+          });
             console.log(5)
           });
             
