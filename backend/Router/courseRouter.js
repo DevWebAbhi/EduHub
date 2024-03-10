@@ -52,9 +52,11 @@ courseRouter.post("/post",async(req,res)=>{
   console.log("check -2")
     const token=req.headers.authorization.split(" ")[1];
     console.log("check -1",req.headers)
+    console.log("jnsdjvnoskd"+token)
     const{name,description,image,checklist}=req.body;
     try {
         const decoded = jwt.verify(token, 'shhhhh');
+        console.log(0)
         const check =await userModel.findOne({id:decoded.userID});
         console.log("check 1")
         if(check.userType=="admin"){
