@@ -55,14 +55,14 @@ courseRouter.post("/post",async(req,res)=>{
     const token=req.headers.authorization.split(" ")[1];
     console.log("check -1",req.headers)
     console.log("jnsdjvnoskd"+token)
-    const{name,description,image,checklist}=req.body;
+    
     try {
         const decoded = jwt.verify(token, 'shhhhh');
         console.log(0,decoded)
         const check =await userModel.findOne({_id:decoded.userID});
         console.log("check 1",check)
         if(check.userType=="admin"){
-          console.log("check 2",req.body,req.files,req.file)
+          
 
           upload(req, res,async function (err) {
             console.log("check 3",req.body,req.files,req.file);
@@ -72,7 +72,7 @@ courseRouter.post("/post",async(req,res)=>{
             }
             
             
-             const image= "https://eduhub-3oyx.onrender.com/"+'files/courseImages/'+req.files[0].filename;
+             const image= "https://eduhub-3oyx.onrender.com/"+"files/courseImages/"+req.files[0].filename;
             
             const{name,description,checklist}=req.body;
             const data=await courseModel({
