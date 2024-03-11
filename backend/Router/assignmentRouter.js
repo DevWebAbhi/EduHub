@@ -53,7 +53,7 @@ const storage = multer.diskStorage({
         const check =await userModel.findOne({_id:decoded.userID});
 
         if(check){
-            const data=await lectureModel.find({_id:id});
+            const data=await assignmentModel.find({_id:id});
             if(data.length==0){
                 return res.status(200).send({msg:"no data"});
             }
