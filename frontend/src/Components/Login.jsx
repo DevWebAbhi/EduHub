@@ -82,7 +82,7 @@ const Login = () => {
             return;
           }
           localStorage.setItem("token-user-eduhub",JSON.stringify({token:data.data.token,userType:"student"}));
-          navigate("/student");
+          navigate("/allcources");
           console.log(data)
         }else{
           const data=await axios.post("https://eduhub-3oyx.onrender.com/user/signup",{name:name,email:email,password:password})

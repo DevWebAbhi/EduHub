@@ -57,7 +57,26 @@ userRouter.post('/login',async(req,res)=>{
       return res.status(200).send({msg:"not a user"});
        
     } catch (error) {
-        res.status(502).send({msg:"error"});
+        res.status(500).send({msg:"error"});
+    }
+})
+
+
+userRouter.post("/addCourse",async(req,res)=>{
+    const{id}=req.body;
+    try {
+        const decoded = jwt.verify(token, 'shhhhh');
+        
+        const check =await userModel.findOne({_id:decoded.userID});
+        if(check){
+            const tempdata=check.course;
+            tempdata.push(id);
+            await userModel.updateOne({_id:decoded.userID},{$set: {course:tempdata}});
+            return res.status(200).send({msg:"sucessfull"});
+        }
+        return res.status(200).send({msg:"error"});
+    } catch (error) {
+        res.status(500).send({msg:"error"});
     }
 })
 
