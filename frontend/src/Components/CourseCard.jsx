@@ -12,25 +12,24 @@ const CourseCard = ({data}) => {
 
     async function handleApply(){
         try {
-            const token=JSON.parse(localStorage.getItem("token-user-eduhub")).token;
-            if(token){
-                const data=await axios.post("https://eduhub-3oyx.onrender.com/user/addCourse",{
+            const token = JSON.parse(localStorage.getItem("token-user-eduhub")).token;
+            if (token) {
+                const config = {
                     headers: {
-                    Authorization: 'Bearer ' + token 
-                    },
-                    id:data.id
-        
-                    });
-                    console.log(data)
-                    if(data.data.msg=="error"){
-                        alert("something went wrong");
-                        return;
+                        Authorization: 'Bearer ' + token
                     }
-                    alert("uploaded sucessfully");
+                };
+                const dataNew = await axios.post("https://eduhub-3oyx.onrender.com/user/addcourse", { id: data.id }, config);
+                console.log(dataNew);
+                if (dataNew.data.msg === "error") {
+                    alert("something went wrong");
                     return;
+                }
+                alert("uploaded successfully");
+                return;
             }
             alert("login first");
-  
+    
         } catch (error) {
             alert("something went wrong");
             console.log(error);

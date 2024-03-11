@@ -88,8 +88,7 @@ userRouter.post("/addcourse",async(req,res)=>{
         const check =await userModel.findOne({_id:decoded.userID});
         console.log(check)
         if(check){
-            const tempdata=check.course;
-            tempdata.push(id);
+            const tempdata=[...check.course,id];
             await userModel.updateOne({_id:decoded.userID},{$set: {course:tempdata}});
             return res.status(200).send({msg:"sucessfull"});
         }
