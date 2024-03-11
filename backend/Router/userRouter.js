@@ -98,4 +98,14 @@ userRouter.post("/addcourse",async(req,res)=>{
     }
 })
 
+userRouter.get("/usercount",async(req,res)=>{
+    try {
+        const data=await userModel.find();
+        return res.status(200).send({msg:"sucessfull",data:data.length});
+        
+    } catch (error) {
+        res.status(500).send({msg:"error"}); 
+    }
+})
+
 module.exports=userRouter;

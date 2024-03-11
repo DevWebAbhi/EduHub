@@ -92,4 +92,13 @@ courseRouter.post("/post",async(req,res)=>{
     }
 })
 
+courseRouter.get("/coursecount",async(req,res)=>{
+  try {
+    const data=await courseModel.find();
+    return res.status(200).send({msg:"sucessfull",data:data.length});
+  } catch (error) {
+    res.status(500).send({msg:"error"});
+  }
+})
+
 module.exports=courseRouter;

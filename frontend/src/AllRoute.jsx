@@ -8,6 +8,8 @@ import AllCources from './Components/AllCources';
 import OptedCourse from './Components/OptedCourse';
 import Lecture from './Components/Lecture';
 import Assignment from './Components/Assignment';
+import UploadAssignment from './Components/UploadAssignment';
+import UploadLecture from './Components/UploadLecture';
 
 const AllRoute = () => {
   return (
@@ -21,6 +23,8 @@ const AllRoute = () => {
         <Route path='/opted' element={<OptedCourse/>}/>
         <Route path='/lecture' element={<Lecture/>}/>
         <Route path='/assignment' element={<Assignment/>}/>
+        <Route path='/uploadassignment' element={<UploadAssignment/>}/>
+        <Route src="uploadlecture" element={<UploadLecture/>}/>
       </Routes>
     </Router>
   );

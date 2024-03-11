@@ -11,7 +11,7 @@ const OptedCourseCard = ({data}) => {
     const navigate=useNavigate();
 
     function setCourseId(){
-        localStorage.setItem("courseID-eduhub",JSON.stringify(data._id));
+        localStorage.setItem("courseID-eduhub",JSON.stringify({id:data._id}));
         navigate("/assignment");
     }
 

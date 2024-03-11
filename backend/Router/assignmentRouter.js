@@ -86,7 +86,7 @@ assignmentRouter.post('/post',async(req,res)=>{
                  const image= "https://eduhub-3oyx.onrender.com/"+"files/assignmentImages/"+req.files[0].filename;
                 
                 const{title,description,courseID}=req.body;
-               console.log(title,description,check)
+               console.log(title,description)
                 const data = await lectureModel.create({
                   title:title,
                   image: image,

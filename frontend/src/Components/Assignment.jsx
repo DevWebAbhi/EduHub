@@ -16,7 +16,12 @@ const Assignment = () => {
             };
             const courseID=JSON.parse(localStorage.getItem("courseID-eduhub"));
 
-            const info=await axios.get("https://eduhub-3oyx.onrender.com/assignment",{id:courseID},config);
+            const info=await axios.get("https://eduhub-3oyx.onrender.com/assignment",config,{id:courseID.id});
+            console.log(info);
+            if(info.data.msg=="no data"){
+                alert("no data");
+                return;
+            }
             if(info.data.msg!="error"){
                 setData(info.data.data);
                 return;
