@@ -61,7 +61,7 @@ userRouter.post('/login',async(req,res)=>{
     }
 })
 
-userRouter.get("/optedCourse",async(req,res)=>{
+userRouter.get("/optedcourse",async(req,res)=>{
     const token=req.headers.authorization.split(" ")[1];
     try {
 
@@ -78,7 +78,7 @@ userRouter.get("/optedCourse",async(req,res)=>{
     }
 })
 
-userRouter.post("/addCourse",async(req,res)=>{
+userRouter.post("/addcourse",async(req,res)=>{
     const{id}=req.body;
     const token=req.headers.authorization.split(" ")[1];
     console.log(id,token)

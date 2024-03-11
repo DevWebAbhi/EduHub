@@ -14,15 +14,17 @@ const CourseCard = ({data}) => {
         try {
             const token=JSON.parse(localStorage.getItem("token-user-eduhub")).token;
             if(token){
-                const data=await axios.post("https://eduhub-3oyx.onrender.com//user/addCourse",{
+                const data=await axios.post("https://eduhub-3oyx.onrender.com/user/addCourse",{
                     headers: {
                     Authorization: 'Bearer ' + token 
                     },
                     id:data.id
         
                     });
+                    console.log(data)
                     if(data.data.msg=="error"){
                         alert("something went wrong");
+                        return;
                     }
                     alert("uploaded sucessfully");
                     return;
