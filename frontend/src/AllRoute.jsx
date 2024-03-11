@@ -6,6 +6,8 @@ import Admin from './Components/Admin';
 import CourseUpload from './Components/CourseUpload';
 import AllCources from './Components/AllCources';
 import OptedCourse from './Components/OptedCourse';
+import Lecture from './Components/Lecture';
+import Assignment from './Components/Assignment';
 
 const AllRoute = () => {
   return (
@@ -17,6 +19,8 @@ const AllRoute = () => {
         <Route path='/admin/course_upload' element={<CourseUpload/>} />
         <Route path='/allcources' element={<AllCources/>}/>
         <Route path='/opted' element={<OptedCourse/>}/>
+        <Route path='/lecture' element={<Lecture/>}/>
+        <Route path='/assignment' element={<Assignment/>}/>
       </Routes>
     </Router>
   );
