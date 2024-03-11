@@ -64,10 +64,13 @@ userRouter.post('/login',async(req,res)=>{
 
 userRouter.post("/addCourse",async(req,res)=>{
     const{id}=req.body;
+    const token=req.headers.authorization.split(" ")[1];
+    console.log(id,token)
     try {
         const decoded = jwt.verify(token, 'shhhhh');
         
         const check =await userModel.findOne({_id:decoded.userID});
+        console.log(check)
         if(check){
             const tempdata=check.course;
             tempdata.push(id);
