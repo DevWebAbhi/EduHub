@@ -5,6 +5,7 @@ import Student from './Components/Student';
 import Admin from './Components/Admin';
 import CourseUpload from './Components/CourseUpload';
 import AllCources from './Components/AllCources';
+import OptedCourse from './Components/OptedCourse';
 
 const AllRoute = () => {
   return (
@@ -15,6 +16,7 @@ const AllRoute = () => {
         <Route path="/admin" element={<Admin />} />
         <Route path='/admin/course_upload' element={<CourseUpload/>} />
         <Route path='/allcources' element={<AllCources/>}/>
+        <Route path='/opted' element={<OptedCourse/>}/>
       </Routes>
     </Router>
   );

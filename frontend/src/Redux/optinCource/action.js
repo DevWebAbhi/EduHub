@@ -1,11 +1,18 @@
 
-import { SET_DATA } from "./actionType";
+import { SET_DATA_OPTIN } from "./actionType";
 import axios from "axios";
 export const getData=()=>async(dispatch)=>{
     try {
-        const data=await axios.get("https://eduhub-3oyx.onrender.com/user/optedcourse");
-        console.log(data,"all");
-        dispatch({type:SET_DATA,payload:data.data.data});
+        const token = JSON.parse(localStorage.getItem("token-user-eduhub")).token;
+            
+                const config = {
+                    headers: {
+                        Authorization: 'Bearer ' + token
+                    }
+                };
+        const data=await axios.get("https://eduhub-3oyx.onrender.com/user/optedcourse",config);
+        console.log(data,"allact");
+        dispatch({type:SET_DATA_OPTIN,payload:data.data.data});
     } catch (error) {
         console.log(error)
     }

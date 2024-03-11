@@ -19,7 +19,7 @@ const CourseCard = ({data}) => {
                         Authorization: 'Bearer ' + token
                     }
                 };
-                const dataNew = await axios.post("https://eduhub-3oyx.onrender.com/user/addcourse", { id: data.id }, config);
+                const dataNew = await axios.post("https://eduhub-3oyx.onrender.com/user/addcourse", { id: data._id }, config);
                 console.log(dataNew);
                 if (dataNew.data.msg === "error") {
                     alert("something went wrong");

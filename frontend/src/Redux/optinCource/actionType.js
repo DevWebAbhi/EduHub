@@ -1,1 +1,1 @@
-export const SET_DATA="SET_DATA";
+export const SET_DATA_OPTIN="SET_DATA_OPTIN";

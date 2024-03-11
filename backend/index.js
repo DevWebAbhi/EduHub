@@ -4,6 +4,8 @@ const PORT=process.env.PORT;
 const cors = require('cors')
 const userRouter=require("./Router/userRouter");
 const courseRouter=require("./Router/courseRouter");
+const assignmentRouter=require("./Router/assignmentRouter");
+const lectureRouter=require("./Router/lectureRouter");
 require('dotenv').config();
 app.use(cors("https://edu-mgvwklcaj-devwebabhis-projects.vercel.app"));
 const {connect}=require("./db");
@@ -17,6 +19,10 @@ app.get("/",(req,res)=>{
 app.use("/user",userRouter);
 
 app.use("/courses",courseRouter);
+
+app.use("/lecture",lectureRouter);
+
+app.use("/assignment",assignmentRouter);
 
 
 
