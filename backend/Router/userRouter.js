@@ -61,6 +61,22 @@ userRouter.post('/login',async(req,res)=>{
     }
 })
 
+userRouter.get("/optedCourse",async(req,res)=>{
+    const token=req.headers.authorization.split(" ")[1];
+    try {
+
+        const decoded = jwt.verify(token, 'shhhhh');
+        
+        const check =await userModel.findOne({_id:decoded.userID});
+        console.log(check)
+        if(check){
+            return res.status(200).send({msg:"sucessfull",data:check.course});
+        }
+        res.status(200).send({msg:"error"});
+    } catch (error) {
+        res.status(500).send({msg:"error"});
+    }
+})
 
 userRouter.post("/addCourse",async(req,res)=>{
     const{id}=req.body;
