@@ -51,7 +51,9 @@ const storage = multer.diskStorage({
   }).array('Images', 12);
 
 courseRouter.post("/post",async(req,res)=>{
-  
+  if(req.headers.authorization==undefined || req.headers.authorization==null){
+    return res.status(500).send({msg:"error"});
+}
     const token=req.headers.authorization.split(" ")[1];
    
     
