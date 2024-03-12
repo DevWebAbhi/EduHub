@@ -75,12 +75,13 @@ const UploadAssignment = () => {
             formData.append("description", description);
             formData.append("courseID", info.id);
             
-            const data=await axios.post('https://eduhub-3oyx.onrender.com/assignment/post',{
-            headers: {
-            Authorization: 'Bearer ' + token 
-            }
-
-            }, formData)
+            
+                const config = {
+                    headers: {
+                        Authorization: 'Bearer ' + token
+                    }
+                };
+            const data=await axios.post('https://eduhub-3oyx.onrender.com/assignment/post',config,formData)
             
             if(data.data.msg=="not a admin"){
                 dispatch({type:ADMIN_COURSE_UPLOAD_SET_ALERT_MSG,payload:"Unauthorized access"});
