@@ -64,6 +64,7 @@ const UploadAssignment = () => {
             }
 
             const token=JSON.parse(localStorage.getItem("token-user-eduhub")).token;
+            console.log(token)
             if(!token){
                 dispatch({type:ADMIN_COURSE_UPLOAD_SET_ALERT_MSG,payload:"Login First"});
                 isSet();

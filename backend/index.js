@@ -7,7 +7,10 @@ const courseRouter=require("./Router/courseRouter");
 const assignmentRouter=require("./Router/assignmentRouter");
 const lectureRouter=require("./Router/lectureRouter");
 require('dotenv').config();
-app.use(cors("https://edu-mgvwklcaj-devwebabhis-projects.vercel.app"));
+app.use(cors());
+app.use(cors("https://edu-9bv03caru-devwebabhis-projects.vercel.app"));
+app.use(cors("https://edu-hub-murex.vercel.app/uploadassignment"));
+
 const {connect}=require("./db");
 app.use(express.json());
 
