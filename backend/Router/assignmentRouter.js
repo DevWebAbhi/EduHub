@@ -68,6 +68,9 @@ const storage = multer.diskStorage({
 
 
 assignmentRouter.post('/post',async(req,res)=>{
+    if(req.headers.authorization==undefined || req.headers.authorization==null){
+        return res.status(500).send({msg:"error"});
+    }
     const token=req.headers.authorization.split(" ")[1];
     try {
         const decoded = jwt.verify(token, 'shhhhh');

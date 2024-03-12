@@ -69,7 +69,7 @@ const storage = multer.diskStorage({
 
 
 lectureRouter.post('/post',async(req,res)=>{
-    console.log(token)
+    
     if(req.headers.authorization==undefined || req.headers.authorization==null){
         return res.status(500).send({msg:"error"});
     }
