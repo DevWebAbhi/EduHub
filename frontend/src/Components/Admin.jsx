@@ -55,8 +55,8 @@ useEffect(()=>{
     </Box>
     <Box display={"flex"} marginBottom={"3rem"} justifyContent={"space-around"}>
       <Box padding={"1rem 1.5rem"} background={"red"} onClick={()=>navigate("/admin/course_upload")}>Upload Cources </Box>
-      <Box padding={"1rem 1.5rem"} background={"green"} onClick={()=>navigate()}>Upload Lectures </Box>
-      <Box padding={"1rem 1.5rem"} background={"green"} onClick={()=>navigate()}>Upload Assignment </Box>
+      <Box padding={"1rem 1.5rem"} background={"green"} onClick={()=>navigate("/uploadlecture")}>Upload Lectures </Box>
+      <Box padding={"1rem 1.5rem"} background={"green"} onClick={()=>navigate("/uploadassignment")}>Upload Assignment </Box>
     </Box>
     </>
   )

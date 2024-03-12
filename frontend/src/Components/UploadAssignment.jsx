@@ -52,11 +52,12 @@ const UploadAssignment = () => {
         title:"",description:"",id:""
     });
     async function handleSubmit(e){
+        console.log(info)
         e.preventDefault();
         try {
 
-            const title=info.title,image=info.image,description=info.description,checklist=info.checklist;
-            if(title.length==0 || description.length==0 || checklist.length==0){
+            const title=info.title,image=info.image,description=info.description;
+            if(title.length==0 || description.length==0){
                 dispatch({type:ADMIN_COURSE_UPLOAD_SET_ALERT_MSG,payload:"Fill all credentials"});
                 isSet();
                 return;
@@ -74,12 +75,12 @@ const UploadAssignment = () => {
             formData.append("description", description);
             formData.append("courseID", info.id);
             
-            const data=await axios.post('https://eduhub-3oyx.onrender.com/assignment/post', formData,{
+            const data=await axios.post('https://eduhub-3oyx.onrender.com/assignment/post',{
             headers: {
             Authorization: 'Bearer ' + token 
             }
 
-            })
+            }, formData)
             
             if(data.data.msg=="not a admin"){
                 dispatch({type:ADMIN_COURSE_UPLOAD_SET_ALERT_MSG,payload:"Unauthorized access"});
@@ -165,6 +166,7 @@ const UploadAssignment = () => {
                 ))
             }
         </select>
+        <Input type='submit' value={"submit"} onClick={handleSubmit} padding={"0.35rem 0.9rem"} border={"none"} borderRadius={"0.4rem"} backgroundColor={"#3498DB"} display={"block"} margin={"auto"}/>
     </FormControl>
     <AlertDialog
         isOpen={isvisible}

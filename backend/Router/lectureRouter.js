@@ -70,24 +70,26 @@ const storage = multer.diskStorage({
 
 lectureRouter.post('/post',async(req,res)=>{
     const token=req.headers.authorization.split(" ")[1];
+    console.log(token)
     try {
         const decoded = jwt.verify(token, 'shhhhh');
-        
+        console.log(decoded)
         const check =await userModel.findOne({_id:decoded.userID});
-        
+        console.log(check)
         if(check.userType=="admin"){
             upload(req, res,async function (err) {
-            
+            console.log(1)
                 if (err) {
                   console.error(err);
                   return res.status(500).send({msg:"error"});
                 }
-                
+                console.log(2)
                 
                  const image= "https://eduhub-3oyx.onrender.com/"+"files/lectureImages/"+req.files[0].filename;
                 
                 const{title,description,courseID}=req.body;
-               console.log(title,description,check)
+                console.log(title,description,courseID)
+               
                 const data = await lectureModel.create({
                   title:title,
                   image: image,

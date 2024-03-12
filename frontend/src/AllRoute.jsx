@@ -24,7 +24,7 @@ const AllRoute = () => {
         <Route path='/lecture' element={<Lecture/>}/>
         <Route path='/assignment' element={<Assignment/>}/>
         <Route path='/uploadassignment' element={<UploadAssignment/>}/>
-        <Route src="uploadlecture" element={<UploadLecture/>}/>
+        <Route src="/uploadlecture" element={<UploadLecture/>}/>
       </Routes>
     </Router>
   );
