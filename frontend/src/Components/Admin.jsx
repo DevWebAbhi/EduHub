@@ -31,8 +31,8 @@ useEffect(()=>{
   return (
     <>
     <Box display={"flex"} justifyContent={"space-around"}>
-      <Box padding={"1rem 1.5rem"} background={"red"}>Toatal Cources {student}</Box>
-      <Box padding={"1rem 1.5rem"} background={"green"}>Total Members {course}</Box>
+      <Box padding={"1rem 1.5rem"} background={"#3498DB"}>Toatal Cources {student}</Box>
+      <Box padding={"1rem 1.5rem"} background={"#3498DB"}>Total Members {course}</Box>
     </Box>
     
     <Box width={"min-content"} margin={"auto"} borderColor="transparent" marginTop={"4rem"}  border={"1px solid transparent"}>
@@ -54,9 +54,9 @@ useEffect(()=>{
 />;
     </Box>
     <Box display={"flex"} marginBottom={"3rem"} justifyContent={"space-around"}>
-      <Box padding={"1rem 1.5rem"} background={"red"} onClick={()=>navigate("/admin/course_upload")}>Upload Cources </Box>
-      <Box padding={"1rem 1.5rem"} background={"green"} onClick={()=>navigate("/uploadlecture")}>Upload Lectures </Box>
-      <Box padding={"1rem 1.5rem"} background={"green"} onClick={()=>navigate("/uploadassignment")}>Upload Assignment </Box>
+      <Box padding={"1rem 1.5rem"} background={"#3498DB"} onClick={()=>navigate("/admin/course_upload")}>Upload Cources </Box>
+      <Box padding={"1rem 1.5rem"} background={"#3498DB"} onClick={()=>navigate("/uploadlecture")}>Upload Lectures </Box>
+      <Box padding={"1rem 1.5rem"} background={"#3498DB"} onClick={()=>navigate("/uploadassignment")}>Upload Assignment </Box>
     </Box>
     </>
   )
