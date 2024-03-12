@@ -73,7 +73,7 @@ const Login = () => {
           if(data.data.userType=="admin"){
             console.log("admin");
             localStorage.setItem("token-user-eduhub",JSON.stringify({token:data.data.token,userType:"admin"}));
-            navigate("/admin/courses");
+            navigate("/admin");
             return;
           }
           if(data.data.msg=="not a user"){
