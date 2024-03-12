@@ -154,7 +154,7 @@ const UploadLecture = () => {
     
        
     >
-        <FormLabel marginBottom={"2rem"} color={"#3498DB"} fontSize={"xx-large"} fontWeight={"500"}>Upload Assignment</FormLabel>
+        <FormLabel marginBottom={"2rem"} color={"#3498DB"} fontSize={"xx-large"} fontWeight={"500"}>Upload Lecture</FormLabel>
         <FormLabel  marginBottom={"1rem"} color={"#3498DB"} fontSize={"large"} fontWeight={"500"}>Title</FormLabel>
         <Input type='text' name={"title"} onChange={handleInput} placeholder='Course Title'   width={"100%"} display={"block"} height={"1.7rem"} margin={"auto"} marginBottom={"1.6rem"}  borderWidth={"thin"} borderRadius={"0.5rem"} />
         <FormLabel  marginBottom={"1rem"} color={"#3498DB"} fontSize={"large"} fontWeight={"500"}>Upload Image</FormLabel>
